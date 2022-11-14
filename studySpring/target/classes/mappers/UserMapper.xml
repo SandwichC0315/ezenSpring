@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+		
+<!-- 별칭 지정 -->
+<mapper namespace="edu.study.mapper.userMapper">
+
+	<select id="selectList" resultType="userVO">
+		select uidx
+			, id
+			, password
+			, name
+			, addr
+			, phone
+			, rdate
+			from usertb
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
