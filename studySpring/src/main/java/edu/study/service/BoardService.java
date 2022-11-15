@@ -9,4 +9,8 @@ public interface BoardService {
 	public List<BoardVO> list();
 	
 	BoardVO view(int bidx);
+	
+	int update(BoardVO vo);
+	
+	int delete(BoardVO vo);
 }

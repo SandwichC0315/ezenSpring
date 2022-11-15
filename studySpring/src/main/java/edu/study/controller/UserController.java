@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +29,7 @@ import edu.study.vo.UserVO;
 @Controller
 public class UserController {
 	
-	@Autowired //
+	@Autowired //의존을 자동으로 주입받겠다는 뜻
 	private UserService userService;
 
 
@@ -40,6 +43,39 @@ public class UserController {
 		model.addAttribute("list", list);
 		
 		return "user/list";
+	}
+	
+	@RequestMapping(value="/login.do", method = RequestMethod.POST)
+	public String login(UserVO vo, HttpServletRequest req)
+	{
+		HttpSession session = req.getSession();
+		
+		//로그인 처리
+		UserVO loginVO = userService.findUserByIdPass(vo);
+		
+		if(loginVO != null)
+		{
+			session.setAttribute("login", loginVO);
+		}
+		
+		return "redirect:/board/list.do";
+	}
+	
+	
+	@RequestMapping(value="/logout.do")
+	public String logout(HttpServletRequest req)
+	{
+		HttpSession session = req.getSession();
+		
+		//로그아웃 처리
+		session.invalidate(); //세션 초기화
+		return "redirect:/";		
+	}
+	
+	@RequestMapping(value="/insert.do")
+	public String insert()
+	{
+		return "redirect:/board/list.do";
 	}
 
 }

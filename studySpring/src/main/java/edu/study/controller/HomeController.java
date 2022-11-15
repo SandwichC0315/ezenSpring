@@ -45,19 +45,13 @@ public class HomeController {
 	
 	@RequestMapping(value = "/sample01.do", method = RequestMethod.POST)
 	public String sample01(String t1, String t2) {
-		/*
-		int num = 0;
 		
-		if (t2!=null && !t2.contentEquals(""))
-		{
-			In
-		}
-		*/
 		
 		System.out.println("t1::"+t1);
 		System.out.println("t2::"+t2);
 
 		return "redirect:/";
 	}
+	
 	
 }

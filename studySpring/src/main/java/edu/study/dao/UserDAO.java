@@ -20,4 +20,9 @@ public class UserDAO {
 		//mybatis를 사용하여 usertb 데이터 목록 조회하여 List 타입으로 반환
 		return sqlSession.selectList("edu.study.mapper.userMapper.selectList");
 	}
+	
+	public UserVO findUserByIdPass(UserVO vo)
+	{
+		return sqlSession.selectOne("edu.study.mapper.userMapper.findUserByIdPass", vo);
+	}
 }

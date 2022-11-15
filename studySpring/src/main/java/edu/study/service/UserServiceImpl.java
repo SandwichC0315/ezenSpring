@@ -22,5 +22,12 @@ public class UserServiceImpl implements UserService{
 		return userDAO.list();
 	}
 
+
+	@Override
+	public UserVO findUserByIdPass(UserVO vo) {
+		// TODO Auto-generated method stub
+		return userDAO.findUserByIdPass(vo);
+	}
+
 	
 }

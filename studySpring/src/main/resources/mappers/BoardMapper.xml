@@ -14,16 +14,30 @@
 	</select>
 	
 	<select id="selectOne" resultType="boardVO" parameterType="int">
-		select bidx
-			, title
-			, content
-			, uidx
-			, wdate
-			, hit
-			from boardtb
-			where bidx=#{bidx}
+		select b.bidx
+			, b.title
+			, b.content
+			, b.uidx
+			, b.wdate
+			, b.hit
+			, u.name as username
+			from boardtb b, usertb u
+			where b.uidx = u.uidx
+			and b.bidx=#{bidx}
 	
 	</select>
+	
+	<update id="update" parameterType="boardVO">
+		update boardtb
+		set title = #{title}
+		, content = #{content}
+		where bidx = #{bidx}
+	</update>
+	
+	<delete id="delete" parameterType="boardVO">
+		delete from boardtb
+		where bidx = #{bidx}
+	</delete>
 </mapper>
 
 

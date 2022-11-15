@@ -28,4 +28,15 @@ public class BoardDAO {
 		
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectOne", bidx);
 	}
+	
+	
+	public int update(BoardVO vo)
+	{
+		return sqlSession.update("edu.study.mapper.boardMapper.update", vo);
+	}
+	
+	public int delete(BoardVO vo)
+	{
+		return sqlSession.delete("edu.study.mapper.boardMapper.delete", vo);
+	}
 }

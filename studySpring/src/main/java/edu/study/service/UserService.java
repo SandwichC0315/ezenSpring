@@ -7,4 +7,6 @@ import edu.study.vo.UserVO;
 public interface UserService {
 
 	public List<UserVO> list();
+	
+	UserVO findUserByIdPass(UserVO vo);
 }

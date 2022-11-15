@@ -7,8 +7,15 @@ public class BoardVO {
 	private int uidx;
 	private String wdate;
 	private int hit;
+	private String username;
 	
 	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public int getBidx() {
 		return bidx;
 	}

@@ -2,6 +2,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page session="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- jstl 사용하기 위해 필요한 태그 -->
 <%
 	List<BoardVO> list = (List<BoardVO>)request.getAttribute("list");
 %>
@@ -16,6 +18,10 @@
 	<h2>게시글 목록 페이지</h2>
 	가상경로 /board/list.do 를 요청했을 때 나타나는 페이지입니다. 게시글 목록 페이지입니다.
 	<br />
+	<C:if test="${login != null}">
+	${login.name} 님 환영합니다.
+	</C:if>
+	<br/>
 	<h2><%=request.getAttribute("data1")%></h2>
 
 	<table border="1">
@@ -36,9 +42,11 @@
 				<td><%=vo.getWdate() %></td>			
 			</tr>
 			<%} %>
-	
 		</tbody>
-
 	</table>
+	
+	<c:if test="${login != null}">
+		<button onclick="location.href='/user/insert.do';">등록</button>
+	</c:if>
 </body>
 </html>

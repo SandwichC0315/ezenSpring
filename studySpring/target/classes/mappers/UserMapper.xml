@@ -15,6 +15,25 @@
 			, rdate
 			from usertb
 	</select>
+	
+	<select id="findUserByIdPass" parameterType="userVO" resultType="userVO">
+		select uidx
+			, id
+			, password
+			, name
+			from usertb
+			where id = #{id}
+			and password = #{password}
+	</select>
+	
+	<insert id="insertNewArticle" >
+		insert into boardtb b
+			, b.title
+			, b.content
+			, b.uidx
+			, b.wdate
+			, u.name
+	</insert>
 </mapper>
 
 
