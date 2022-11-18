@@ -13,4 +13,8 @@ public interface BoardService {
 	int update(BoardVO vo);
 	
 	int delete(BoardVO vo);
+	
+	int insert(BoardVO vo);
+	
+	List<BoardVO> selectbytitle(String title);
 }

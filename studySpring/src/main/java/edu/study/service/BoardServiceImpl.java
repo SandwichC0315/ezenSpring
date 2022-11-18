@@ -42,5 +42,17 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.delete(vo);
 	}
 
+	@Override
+	public int insert(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return boardDAO.insert(vo);
+	}
+	
+	@Override
+	public List<BoardVO> selectbytitle(String title) {
+		// TODO Auto-generated method stub
+		return boardDAO.selectbytitle(title);
+	}
+
 	
 }

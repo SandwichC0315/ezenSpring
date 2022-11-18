@@ -72,10 +72,17 @@ public class UserController {
 		return "redirect:/";		
 	}
 	
-	@RequestMapping(value="/insert.do")
-	public String insert()
+	@RequestMapping(value="/join.do", method = RequestMethod.GET)
+	public String join()
 	{
-		return "redirect:/board/list.do";
+		return "user/join";
 	}
+	
+	@RequestMapping (value="/join.do", method = RequestMethod.POST)
+	public String join(UserVO vo)
+	{
+		int result = userService.joinNewUser(vo);
 
+		return "redirect:/";
+	}
 }

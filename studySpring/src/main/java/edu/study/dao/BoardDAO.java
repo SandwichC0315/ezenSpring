@@ -39,4 +39,14 @@ public class BoardDAO {
 	{
 		return sqlSession.delete("edu.study.mapper.boardMapper.delete", vo);
 	}
+	
+	public int insert(BoardVO vo)
+	{
+		return sqlSession.insert("edu.study.mapper.boardMapper.insert", vo);
+	}
+	
+	public List<BoardVO> selectbytitle(String title)
+	{
+		return sqlSession.selectList("edu.study.mapper.boardMapper.selectbytitle", title);
+	}
 }

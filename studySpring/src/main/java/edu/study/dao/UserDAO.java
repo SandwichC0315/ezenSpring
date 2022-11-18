@@ -25,4 +25,9 @@ public class UserDAO {
 	{
 		return sqlSession.selectOne("edu.study.mapper.userMapper.findUserByIdPass", vo);
 	}
+	
+	public int joinNewUser(UserVO vo)
+	{
+		return sqlSession.insert("edu.study.mapper.userMapper.joinNewUser", vo);
+	}
 }

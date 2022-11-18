@@ -42,11 +42,13 @@
 			<td>${vo.content}</td>
 		</tr>
 	</table>
+	<button onclick="location.href='list.do'">목록</button>
 	<button onclick="location.href='modify.do?bidx=${vo.bidx}'">수정</button> 
 	<button onclick="delfrm.submit();">삭제</button>
 	<form name="delfrm" action="delete.do" method="post">
 		<input type="hidden" name="bidx" value="${vo.bidx}">
 	</form>
+	
 </body>
 </html>
 <!--

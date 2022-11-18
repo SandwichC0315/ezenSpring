@@ -13,6 +13,17 @@
 			from boardtb
 	</select>
 	
+	<select id="selectbytitle" resultType="boardVO" parameterType="String">
+		select bidx
+			, title
+			, content
+			, uidx
+			, wdate
+			, hit
+			from boardtb
+			where title like '%'||#{title}||'%'
+	</select>
+	
 	<select id="selectOne" resultType="boardVO" parameterType="int">
 		select b.bidx
 			, b.title
@@ -38,6 +49,28 @@
 		delete from boardtb
 		where bidx = #{bidx}
 	</delete>
+	
+	
+	<insert id="insert" parameterType="boardVO">
+		<![CDATA[
+		insert into boardtb(
+					  bidx
+					, uidx
+					, title
+					, content
+					, wdate) 
+					values(
+						bidx_seq.nextval
+						, #{uidx}
+						, #{title}
+						, #{content}
+						, sysdate
+						)
+		]]>
+		<selectKey order="AFTER" resultType="int" keyProperty="bidx">
+			select max(bidx) from boardtb
+		</selectKey>
+	</insert>
 </mapper>
 
 

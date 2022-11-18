@@ -1,8 +1,11 @@
 package edu.study.controller;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Handles requests for the application home page.
@@ -53,5 +57,34 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
+	
+	@RequestMapping(value = "fileupload.do", method = RequestMethod.GET)
+	public String file()
+	{
+		return "file/upload";
+	}
+	
+	@RequestMapping(value = "fileupload.do", method = RequestMethod.POST)
+	public String file(MultipartFile file1, HttpServletRequest req) throws Exception
+	{
+		//String path = "D:\\KDH(230113)\\ezenSpring\\studySpring\\src\\main\\webapp\\resources\\upload";
+		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
+		
+		System.out.println(path);
+		
+		File dir = new File(path);
+		if (!dir.exists())
+		{
+			dir.mkdirs();
+		}
+		
+		if(!file1.getOriginalFilename().isEmpty())
+		{
+			file1.transferTo(new File(path, file1.getOriginalFilename()));
+		}
+		
+		
+		return "redirect:/";
+	}
 	
 }

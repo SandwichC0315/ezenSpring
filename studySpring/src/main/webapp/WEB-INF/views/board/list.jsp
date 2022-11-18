@@ -18,9 +18,9 @@
 	<h2>게시글 목록 페이지</h2>
 	가상경로 /board/list.do 를 요청했을 때 나타나는 페이지입니다. 게시글 목록 페이지입니다.
 	<br />
-	<C:if test="${login != null}">
+	<c:if test="${login != null}">
 	${login.name} 님 환영합니다.
-	</C:if>
+	</c:if>
 	<br/>
 	<h2><%=request.getAttribute("data1")%></h2>
 
@@ -46,7 +46,7 @@
 	</table>
 	
 	<c:if test="${login != null}">
-		<button onclick="location.href='/user/insert.do';">등록</button>
+		<button onclick="location.href='insert.do';">등록</button>
 	</c:if>
 </body>
 </html>

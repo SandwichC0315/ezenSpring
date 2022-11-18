@@ -9,4 +9,6 @@ public interface UserService {
 	public List<UserVO> list();
 	
 	UserVO findUserByIdPass(UserVO vo);
+	
+	int joinNewUser(UserVO vo);
 }
